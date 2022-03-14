@@ -58,15 +58,6 @@ const syncAndSeed = async() => {
     try{
         await conn.sync({force: true})
         await createBrew(20)
-
-       
-
-        // const brewing = await Brewery.create({name: faker.company.companyName()})
-        // const barrel = await Brewery.create({name: 'Barrel Brewing Co.'})
-        // const bros = await Brewery.create({name: 'Bros and Barrels'})
-        // const bruster = await Brewery.create({name: 'Bruster Brewing Co.'})
-        // const acres = await Brewery.create({name: '12 Acres Brewing Company'})
-        
     }catch(ex) {
         console.log(ex)
     }
