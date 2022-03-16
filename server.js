@@ -4,6 +4,7 @@ const path = require('path');
 const {db, syncAndSeed, models: {Brewery}} = require('./db')
 
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
+app.use('/public', express.static(path.join(__dirname,'public')))
 app.get('/', (req, res)=> res.sendFile(path.join(__dirname, 'index.html')));
 
 app.get('/api/breweries', async(req, res, next) => {
@@ -14,6 +15,16 @@ app.get('/api/breweries', async(req, res, next) => {
         next(ex)
     }
 })
+
+app.post('/api/breweries', async(req, res, next) =>{
+    try{
+        res.status(201).send(await Brewery.generateRandom())
+
+    }catch(ex) {
+        next(ex)
+    }
+})
+
 
 const init = async() => {
     try{

@@ -1,0 +1,10 @@
+body {
+    background-color: cornsilk;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+button:hover {
+    background-color:hsl(224, 100%, 34%);
+    transition: 0.7s;
+    color: white
+}
