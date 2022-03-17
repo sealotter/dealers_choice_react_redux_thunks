@@ -1,35 +1,29 @@
 import React from "react";
-import store from './store'
 import Add from "./Add";
+import { connect } from "react-redux";
 
 
-class Header extends React.Component {
-    constructor() {
-        super()
-        this.state = store.getState() 
+                
+const Header = ({ breweries }) => { 
+    if(breweries.length === 5) {
+        return 'Nice choices!'
     }
-    componentDidMount() {  
-        store.subscribe(() => this.setState(store.getState()) )
-    }   
+    return (
+    <div>
+        <h1>Which Breweries Are The Best? ({breweries.length})</h1>
+        <h3>Choose your top 5 by deleting what you don't like and adding more:</h3>
 
-    render() {
-        const breweries = this.state.breweries
-        
-        
-        return(
-            <div>
-                <h1>Which Breweries Are The Best? ({breweries.length})</h1>
-                <h3>Delete what you don't like and add more to the list:</h3>
-                    <Add />
+            <Add />
             
-            </div>
-        )
-        
-    }
-   
+    </div>
+    )
+
+}
+
+const mapStateToProps = function(state) {
+    return state
 
 }
 
 
-
-export default Header;
+export default connect(mapStateToProps)(Header);

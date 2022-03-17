@@ -1,19 +1,22 @@
 import axios from "axios";
 import React from "react";
-import store from "./store";
+import {connect} from "react-redux"
 
-
-const add = async() => {
-    const res = await axios.post('/api/breweries')
-    store.dispatch({type: "ADD_BREWS", brewery: res.data })
-
-}
-              
-const Add = () => {
+         
+const Add = ({add}) => {
     return(
-        <button onClick={ add }>add more</button>
-        
+        <button onClick={ add }>add more</button>      
     )
 }
 
-export default Add
+const mapDispatch = (dispatch) => { 
+    return {
+        add : async() => {
+            const res = await axios.post('/api/breweries')
+            dispatch({type: "ADD_BREWS", brewery: res.data })
+            
+        }
+    }
+}
+
+export default connect(null, mapDispatch)(Add)

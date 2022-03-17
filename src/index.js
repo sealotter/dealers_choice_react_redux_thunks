@@ -4,6 +4,7 @@ import ReactDOM  from "react-dom";
 import Header from './Header';
 import store from './store';
 import Breweries from './Breweries';
+import {Provider} from 'react-redux'
 
 
 class App extends React.Component {
@@ -16,15 +17,12 @@ class App extends React.Component {
         return(
             <div>
                 <Header />
-                <Breweries />
-              
+                <Breweries />         
             </div>
-        )
-        
-    }
-    
+        )      
+    }   
 }
 
 
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+ReactDOM.render(<Provider store = {store}><App /></Provider>, document.querySelector('#root'));

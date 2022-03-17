@@ -34,8 +34,8 @@ const createBrew = async(brewNum) => {
     
             await Brewery.create({
                 name: faker.company.companyName(),
-                address: faker.address.streetAddress(),
-                about: faker.lorem.sentences()
+                //address: faker.address.streetAddress(),
+                //about: faker.lorem.sentences()
             })
     
             i++
@@ -71,7 +71,5 @@ module.exports = {
         Brewery
        
     }
-
-
 }
 
