@@ -57,7 +57,7 @@ Brewery.generateRandom = function() {
 const syncAndSeed = async() => {
     try{
         await conn.sync({force: true})
-        await createBrew(20)
+        await createBrew(10)
     }catch(ex) {
         console.log(ex)
     }
